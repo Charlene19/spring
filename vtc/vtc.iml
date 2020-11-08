@@ -143,5 +143,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
     <orderEntry type="library" name="mssql-jdbc-7.2.1.jre8" level="project" />
+    <orderEntry type="library" name="signin" level="application" />
   </component>
 </module>
