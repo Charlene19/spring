@@ -4,6 +4,7 @@ import com.tpvtcdim.demo.model.Loan;
 import com.tpvtcdim.demo.repository.LoanRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.ejb.HibernateEntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,11 +19,12 @@ public class LoanServices {
 
 public void createLoan(Loan loan){loanRepository.save(loan);}
 public Integer findLast(){
-    SessionFactory sessionFactory = new org.hibernate.cfg.Configuration().configure().buildSessionFactory();
-    Session session = sessionFactory.getCurrentSession();
-    String lastID = "select max(loanId) from Loan;";
-    Query query  = session.createQuery(lastID);
-    Integer lastLoanId = query.getFirstResult();
+   List<Loan> findLast = loanRepository.findAll();
+int lastLoanId = 0;
+    for (Loan loan: findLast) {
+        while (lastLoanId > loan.getLoanId())
+            lastLoanId = loan.getLoanId();
+    }
 return lastLoanId;}
 
 public List<Loan> loanList(){return loanRepository.findAll();}

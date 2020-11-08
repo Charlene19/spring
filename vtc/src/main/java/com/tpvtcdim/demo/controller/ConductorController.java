@@ -23,7 +23,7 @@ public class ConductorController {
         conductor.setConductorLname(prenom);
 
         conductorServices.createConductor(conductor);
-        return "Conducteur ajouté";
+        return ("/Ajout");
     }
 
     @GetMapping("/listConductors")
@@ -31,7 +31,7 @@ public class ConductorController {
         java.util.List<Conductor> conductors = conductorServices.listConductor();
         model.addAttribute("conductors", conductors);
 
-        return ("listConductors");
+        return "listConductors";
     }
 
     @RequestMapping(value ="/deleteConductor/{id}", method = RequestMethod.DELETE)

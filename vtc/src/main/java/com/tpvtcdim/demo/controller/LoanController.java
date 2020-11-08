@@ -15,9 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -48,12 +47,15 @@ public class LoanController {
         java.util.List<Conductor> conductors = conductorServices.listConductor();
         model.addAttribute("conductors", conductors);
         model.addAttribute("cars", cars);
+        AssocLoanConductor assocLoanConductor = new AssocLoanConductor();
+        model.addAttribute("assocLoanConductor", assocLoanConductor);
         return "Loan";
     }
 
     @PostMapping (path="/createLoan")
-    public String createAssoc(@RequestParam String conductorId, String carId) {
+    public String createAssoc(AssocLoanConductor assocLoanConductor, Model model) {
 
+        model.addAttribute("assocLoanConductor", assocLoanConductor);
         Loan loan = new Loan();
 
         loan.setLoanDateEnd(new java.sql.Date(2020,11,20));
@@ -62,9 +64,9 @@ public class LoanController {
 
         int loanId = loanServices.findLast();
 
-        assocLoanConductorServices.createAssocLoanConductor(Integer.parseInt(conductorId), Integer.parseInt( carId));
+        assocLoanConductorServices.createAssocLoanConductor(assocLoanConductor);
 
-        return ("Ajout");
+        return ("/Ajout");
     }
 
     @RequestMapping(value ="/createL", method = RequestMethod.POST)

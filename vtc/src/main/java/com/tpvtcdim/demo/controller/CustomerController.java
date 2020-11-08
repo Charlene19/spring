@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import java.util.List;
+
 
 
 
@@ -18,23 +18,23 @@ public class CustomerController {
     CustomerServices customerServices;
 
 
-    @PostMapping("/add")
+    @PostMapping("/createCustomer")
     public String addCustomer(@RequestParam String customerUsername, @RequestParam String customerPassword) {
         Customer customer = new Customer();
         customer.setCustomerUsername(customerUsername);
         customer.setCustomerPassword(customerPassword);
         customerServices.createCustomer(customer);
 
-        String s = "Added new customer to repo!";
-        return s;
+
+        return ("/Ajout");
     }
 
     @GetMapping("/listCustomers")
     public String customerList(Model model) {
 
-        List<Customer> customers = customerServices.customerList();
+        java.util.List<Customer> customers = customerServices.customerList();
         model.addAttribute("customers", customers);
-    return ("listCustomers");
+    return "listCustomers";
 
     }
 

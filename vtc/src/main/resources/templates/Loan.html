@@ -40,20 +40,20 @@
 
 <br/>
 <div class="container">
-<form th:action="@{/createLoan}"  method="POST">
+<form th:action="@{/createLoan}" th:object="${assocLoanConductor}"  method="POST">
 
 Choix du conducteur : <select  name="conductorId" id="conductor-select">
-    <option  th:each ="conductor:${conductors}" th:text="${conductor.conductorName}" value="${conductor.conductorId}">
+    <option  th:each ="conductor:${conductors}" th:text="${conductor.conductorName}" th:value="${conductor.conductorId}">
 </select>
 <br/>
     <br/>
 Choix de la voiture : <select  name="Cars" id="Cars-select">
-    <option th:each ="car:${cars}" th:text="${car.carModel}" value="${car.carId}">
+    <option th:each ="car:${cars}" th:text="${car.carModel}" th:value="${car.carId}">
 </select>
     <br/>
     <br/>
 
-    <input    type="submit" value="Je valide la location">
+    <input  type="submit" value="Je valide la location">
 </form>
 </div>
 </body>

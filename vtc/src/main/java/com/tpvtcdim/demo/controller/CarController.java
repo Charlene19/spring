@@ -25,8 +25,8 @@ public class CarController {
         car.setCarRegistration(immatriculation);
 
         carsServices.createCar(car);
-        String reponse = "Nouvelle voiture ajoutée";
-        return reponse;
+
+        return ("/Ajout");
     }
 
     @GetMapping("/listCars")
