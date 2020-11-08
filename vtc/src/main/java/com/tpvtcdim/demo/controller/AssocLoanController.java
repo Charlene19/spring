@@ -20,19 +20,7 @@ public class AssocLoanController {
     @Autowired
     LoanServices loanServices;
 
-    @RequestMapping (value="/createLoan", method = RequestMethod.POST)
-    public String createAssoc(@RequestParam Integer conductorId, Integer loanId) {
-        Loan loan = new Loan();
-        Date date = new Date(17/11/2010);
-        loan.setLoanDateEnd(date);
-        loan.setLoanDateStart(date);
-        loanServices.createLoan(loan);
 
-        loanId = loanServices.findLast();
-      assocLoanConductorServices.createAssocLoanConductor(conductorId, loanId);
-
-        return "Réservation ajoutée";
-    }
 
 
 }

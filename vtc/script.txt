@@ -1,0 +1,51 @@
+create table ASSOC_LOAN_CONDUCTOR
+(
+	CONDUCTOR_ID numeric not null,
+	LOAN_ID numeric not null,
+	constraint PK_ASSOC_LOAN_CONDUCTOR
+		primary key nonclustered (CONDUCTOR_ID, LOAN_ID)
+)
+go
+
+create table CARS
+(
+	CAR_ID numeric identity
+		constraint PK_CAR
+			primary key nonclustered,
+	CAR_BRAND varchar(100) not null,
+	CAR_MODEL varchar(100) not null,
+	CAR_COLOR varchar(100) not null,
+	CAR_REGISTRATION varchar(100) not null
+)
+go
+
+create table CONDUCTOR
+(
+	CONDUCTOR_ID numeric identity
+		constraint PK_CONDUCTOR
+			primary key nonclustered,
+	CONDUCTOR_NAME varchar(100) not null,
+	CONDUCTOR_LNAME varchar(100) not null
+)
+go
+
+create table Customer
+(
+	CUSTOMER_ID numeric identity
+		constraint PK_CUSTOMER
+			primary key nonclustered,
+	CUSTOMER_USERNAME varchar(100) not null,
+	CUSTOMER_PASSWORD varchar(100) not null
+)
+go
+
+create table LOAN
+(
+	LOAN_ID numeric identity
+		constraint PK_LOAN
+			primary key nonclustered,
+	LOAN_DATE_START date not null,
+	LOAN_DATE_END date not null
+)
+go
+

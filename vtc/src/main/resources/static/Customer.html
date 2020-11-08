@@ -1,8 +1,6 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/layout}">
+<html xmlns:th="http://www.thymeleaf.org" lang="EN">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +17,7 @@
      style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
 
     <!-- <a th:href="@{/_menu.html}">Home</a> -->
-    <a href="index.html"> Home </a>
+    <a href="/"> Home </a>
 
     | &nbsp;
 
@@ -36,20 +34,20 @@
     | &nbsp;
 
     <!-- <a th:href="@{/templates/Loan.html}">Réservation</a>-->
-    <a href="Loan.html"> Réservation </a>
+    <a href="/Loan"> Réservation </a>
 
 </div>
 <br/>
 <div class="container">
-    <form action="/add" class="form-signin" method="post" >
+    <form action="/createCustomer" class="form-signin" method="post" >
         <h2 class="form-signin-heading">Please sign in</h2>
         <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="login" name="login" class="form-control" placeholder="Username" required autofocus>
+            <label  class="sr-only">Username</label>
+            <input type="text" id="login" name="customerUsername" class="form-control" placeholder="Username" required autofocus>
         </p>
         <p>
             <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            <input type="password" id="password" name="customerPassword" class="form-control" placeholder="Password" required>
         </p>
         <input name="_csrf" type="hidden" value="2749677a-fe98-4d84-af83-7d7c9cf68b41" />
         <button class="btn btn-lg btn-primary btn-block" type="submit">Je crée mon compte</button>

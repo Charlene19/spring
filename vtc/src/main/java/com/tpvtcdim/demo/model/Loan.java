@@ -1,12 +1,17 @@
 package com.tpvtcdim.demo.model;
 
+
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 public class Loan {
     private int loanId;
+
     private Date loanDateStart;
+
     private Date loanDateEnd;
 
     @Id
@@ -48,9 +53,9 @@ public class Loan {
         Loan loan = (Loan) o;
 
         if (loanId != loan.loanId) return false;
-        if (loanDateStart != null ? !loanDateStart.equals(loan.loanDateStart) : loan.loanDateStart != null)
+        if (!Objects.equals(loanDateStart, loan.loanDateStart))
             return false;
-        if (loanDateEnd != null ? !loanDateEnd.equals(loan.loanDateEnd) : loan.loanDateEnd != null) return false;
+        if (!Objects.equals(loanDateEnd, loan.loanDateEnd)) return false;
 
         return true;
     }

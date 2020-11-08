@@ -20,5 +20,10 @@ public class AssocLoanConductorServices {
         assocLoanConductorRepository.save(assocLoanConductor);
     }
 
+    public void createAssocLoanConductor(AssocLoanConductor assocLoanConductor){
+
+        assocLoanConductorRepository.save(assocLoanConductor);
+    }
+
     public List<AssocLoanConductor> getAssocLoanConductorList(){return assocLoanConductorRepository.findAll();}
 }
