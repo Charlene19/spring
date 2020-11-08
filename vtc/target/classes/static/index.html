@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenue</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+</head>
+
+
+    <div xmlns:th="http://www.thymeleaf.org"
+         style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+
+       <!-- <a th:href="@{/_menu.html}">Home</a> -->
+        <a href="index.html"> Home </a>
+
+        | &nbsp;
+
+        <!--<a th:href="@{Customer.html}">Création Client</a>-->
+        <a href="Cars.html"> Création Cars </a>
+        | &nbsp;
+
+      <!--  <a th:href="@{templates/Cars.html}">Création Voiture</a>-->
+        <a href="Customer.html"> Création Customer </a>
+        | &nbsp;
+
+        <!--<a th:href="@{templates/Conductor.html}">Création Conducteur</a>-->
+        <a href="Conductor.html"> Création Conducteur </a>
+        | &nbsp;
+
+        <!-- <a th:href="@{/templates/Loan.html}">Réservation</a>-->
+        <a href="Loan.html"> Réservation </a>
+
+    </div>
+<h2 style="text-align: center">Home Page!</h2>
+
+    <br>
+    </br>
+<div style="text-align: center">
+
+<form action="/listCars" method="GET">
+    <button >Liste voitures</button>
+</form>
+</div>
+
+</br>
+<div style="text-align: center">
+<form action="/listCustomers" method="GET">
+    <button>Liste clients</button>
+</form>
+</div>
+</br>
+<div style="text-align: center">
+<form action="/listLoan" method="GET">
+    <button>List réservation</button>
+</form>
+</div>
+</br>
+<div style="text-align: center">
+    <form action="/conductorList" method="GET">
+        <button>Liste des conducteurs</button>
+    </form>
+</div>
+</div>
+</body>
+</html>
