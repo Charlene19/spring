@@ -2,6 +2,7 @@ package com.tpvtcdim.demo.controller;
 
 
 import com.tpvtcdim.demo.model.Conductor;
+import com.tpvtcdim.demo.model.Loan;
 import com.tpvtcdim.demo.services.ConductorServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,10 +35,12 @@ public class ConductorController {
         return "listConductors";
     }
 
-    @RequestMapping(value ="/deleteConductor/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable(name = "id") String id){
+    @GetMapping(value ="/deleteConductor")
+    public String delete(Conductor conductor, Model model){
+        conductor = (Conductor) model.getAttribute("conductor");
+        conductorServices.deleteConductor(conductor);
 
-
-        return ("listConductors");
+        return "/Ajout";
     }
+
 }

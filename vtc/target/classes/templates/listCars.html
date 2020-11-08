@@ -35,7 +35,7 @@
 <h2 style="text-align: center">Liste des voitures !</h2>
 <div class="container">
 
-    <table class="table" border="1">
+    <table border="1" class="table">
         <tr>
             <th scope="col">ID Car</th>
             <th scope="col">Marque</th>
@@ -55,8 +55,8 @@
             <td th:text="${car.carRegistration}">...</td>
 
 
-            <td><form th:href="@{deleteCar/__${car.carId}__}" > Supprimer<button type="submit"></button> </form></td>
-            <td><form th:action="@{/updateCar}" th:object="${car}"> Modifier<button type="submit"> </button></form></td>
+            <td><form th:action="@{/deleteCar}" th:object="${car}">  Supprimer<button type="submit"></button> </form></td>
+           <!-- <td><form th:action="@{/updateCar}" th:object="${car}"> Modifier<button type="submit"> </button></form></td>-->
 
         </tr>
     </table>

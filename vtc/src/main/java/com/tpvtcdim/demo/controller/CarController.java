@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 public class CarController {
@@ -41,11 +40,18 @@ public class CarController {
     }
 
 
-   @RequestMapping(value ="/deleteCar/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable(name = "id") String id){
+    @GetMapping(value ="/deleteCar")
+    public String delete(Cars cars, Model model){
+        cars = (Cars) model.getAttribute("cars");
+        carsServices.deleteCar(cars);
 
-
-        return ("listCars");
+        return "/Ajout";
     }
+
+   /* @GetMapping(value ="/updateCar")
+    public  Cars updateCar(Cars cars, Model model){
+        model.getAttribute("cars", cars);
+        return
+    }*/
 
 }

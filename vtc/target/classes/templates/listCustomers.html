@@ -49,7 +49,7 @@
             <td scope="col" th:text="${customer.customerPassword}">...</td>
 
 
-            <td><form th:href="@{deleteCustomer/__${customer.customerId}__}"> Supprimer<button type="submit"></button> </form></td>
+            <td><form th:action="@{/deleteCustomer}" th:object="${customer}"> Supprimer<button type="submit"></button> </form></td>
             <td><form th:action="@{/updateCustomer}" th:object="${customer}"> Modifier<button type="submit"> </button></form></td>
         </tr>
     </table>

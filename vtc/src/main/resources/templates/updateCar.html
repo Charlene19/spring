@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="EN">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier une voiture</title>
+</head>
+<body>
+<div xmlns:th="http://www.thymeleaf.org"
+     style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+
+    <!-- <a th:href="@{/_menu.html}">Home</a> -->
+    <a href="/"> Home </a>
+
+    | &nbsp;
+
+    <!--<a th:href="@{Customer.html}">Création Client</a>-->
+    <a href="Cars.html"> Création Cars </a>
+    | &nbsp;
+
+    <!--  <a th:href="@{templates/Cars.html}">Création Voiture</a>-->
+    <a href="Customer.html"> Création Customer </a>
+    | &nbsp;
+
+    <!--<a th:href="@{templates/Conductor.html}">Création Conducteur</a>-->
+    <a href="Conductor.html"> Création Conducteur </a>
+    | &nbsp;
+
+    <!-- <a th:href="@{/templates/Loan.html}">Réservation</a>-->
+    <a href="/Loan"> Réservation </a>
+
+</div>
+
+<div class="container">
+    <form class="form-signin" th:action="${}" th:object="${}" method="post" >
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <p>
+            <label  class="sr-only">Marque</label>
+            <input type="text" id="username" name="marque" class="form-control" placeholder="Marque" required autofocus>
+        </p>
+        <p>
+            <label class="sr-only">Modele</label>
+            <input type="text"  name="modele" class="form-control" placeholder="Modele" required>
+        </p>
+
+        <p>
+            <label class="sr-only">Couleur</label>
+            <input type="text"  name="couleur" class="form-control" placeholder="Couleur" required>
+        </p>
+
+        <p>
+            <label class="sr-only">Immatriculation</label>
+            <input type="text"  name="immatriculation" class="form-control" placeholder="Immatriculation" required>
+        </p>
+        <input name="_csrf" type="hidden" value="2749677a-fe98-4d84-af83-7d7c9cf68b41" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Je crée une voiture</button>
+    </form>
+</body>
+</html>

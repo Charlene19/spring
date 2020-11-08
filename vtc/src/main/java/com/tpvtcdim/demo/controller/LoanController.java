@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Optional;
 
 
 @Controller
@@ -57,7 +58,6 @@ public class LoanController {
 
         model.addAttribute("assocLoanConductor", assocLoanConductor);
         Loan loan = new Loan();
-
         loan.setLoanDateEnd(new java.sql.Date(2020,11,20));
         loan.setLoanDateStart(new java.sql.Date(2020,11,28));
         loanServices.createLoan(loan);
@@ -85,11 +85,12 @@ public class LoanController {
         return "redirect:/listCustomers";
     }
 
-    @RequestMapping(value ="/deleteLoan/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable(name = "id") String id){
+    @GetMapping(value ="/deleteLoan")
+    public String delete(Loan loan, Model model){
+        loan = (Loan) model.getAttribute("loan");
+loanServices.deleteLoan(loan);
 
-
-        return ("listLoans");
+        return "/Ajout";
     }
 
 

@@ -1,6 +1,7 @@
 package com.tpvtcdim.demo.controller;
 
 import com.tpvtcdim.demo.model.Customer;
+import com.tpvtcdim.demo.model.Loan;
 import com.tpvtcdim.demo.services.CustomerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,8 +46,12 @@ public class CustomerController {
         return ("listCustomers");
     }
 
-   /* @GetMapping("/find/{id}")
-    public Optional<Customer> findCustomerById(@PathVariable Integer id) {
-        return   customerServices.(id);
-    }*/
+    @GetMapping(value ="/deleteCustomer")
+    public String delete(Customer customer, Model model){
+        customer = (Customer) model.getAttribute("customer");
+        customerServices.deleteCustomer(customer);
+
+        return "/Ajout";
+    }
+
 }
