@@ -49,10 +49,10 @@
 
 
             <td th:text="${car.carId}">...</td>
-            <td th:text="${car.brand}">...</td>
-            <td th:text="${car.model}">...</td>
-            <td th:text="${car.color}">...</td>
-            <td th:text="${car.registration}">...</td>
+            <td th:text="${car.carBrand}">...</td>
+            <td th:text="${car.carModel}">...</td>
+            <td th:text="${car.carColor}">...</td>
+            <td th:text="${car.carRegistration}">...</td>
 
 
             <td><form th:href="@{deleteCar/__${car.carId}__}" > Supprimer<button type="submit"></button> </form></td>
