@@ -4,6 +4,7 @@ import com.tpvtcdim.demo.model.Customer;
 import com.tpvtcdim.demo.model.Loan;
 import com.tpvtcdim.demo.services.CustomerServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,8 @@ public class CustomerController {
 
     @Autowired
     CustomerServices customerServices;
-
+    @Value("${method.unavailable}")
+    private String erreurMessage;
 
     @PostMapping("/createCustomer")
     public String addCustomer(@RequestParam String customerUsername, @RequestParam String customerPassword) {
@@ -53,5 +55,8 @@ public class CustomerController {
 
         return "/Ajout";
     }
-
+    @GetMapping(value ="/updateCustomer")
+    public String update(Model model){
+        model.addAttribute("erreurMessage", erreurMessage);
+        return "/Erreur";}
 }

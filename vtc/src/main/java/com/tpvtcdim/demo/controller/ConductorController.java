@@ -5,6 +5,7 @@ import com.tpvtcdim.demo.model.Conductor;
 import com.tpvtcdim.demo.model.Loan;
 import com.tpvtcdim.demo.services.ConductorServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ public class ConductorController {
 
     @Autowired
     ConductorServices conductorServices;
+    @Value("${method.unavailable}")
+    private String erreurMessage;
 
     @PostMapping("/createConductor")
     public String addConductor(@RequestParam String prenom, @RequestParam String nom){
@@ -42,5 +45,8 @@ public class ConductorController {
 
         return "/Ajout";
     }
-
+    @GetMapping(value ="/updateConductor")
+    public String update(Model model){
+        model.addAttribute("erreurMessage", erreurMessage);
+        return "/Erreur";}
 }

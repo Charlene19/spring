@@ -148,5 +148,6 @@
     <orderEntry type="library" name="mssql-jdbc-7.2.1.jre8" level="project" />
     <orderEntry type="library" name="signin" level="application" />
     <orderEntry type="library" name="bootstrap-datepicker" level="application" />
+    <orderEntry type="library" name="bootstrap-datetimepicker" level="application" />
   </component>
 </module>
