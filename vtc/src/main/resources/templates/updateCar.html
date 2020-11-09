@@ -31,11 +31,11 @@
 </div>
 
 <div class="container">
-    <form class="form-signin" th:action="${}" th:object="${}" method="post" >
+    <form class="form-signin" action="/createCars"  method="post" >
         <h2 class="form-signin-heading">Please sign in</h2>
         <p>
             <label  class="sr-only">Marque</label>
-            <input type="text" id="username" name="marque" class="form-control" placeholder="Marque" required autofocus>
+            <input type="text" id="username" name="marque" class="form-control" th:placeholder= "${cars.carBrand}" required autofocus>
         </p>
         <p>
             <label class="sr-only">Modele</label>
@@ -52,7 +52,8 @@
             <input type="text"  name="immatriculation" class="form-control" placeholder="Immatriculation" required>
         </p>
         <input name="_csrf" type="hidden" value="2749677a-fe98-4d84-af83-7d7c9cf68b41" />
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Je crée une voiture</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Je modifies une voiture</button>
     </form>
+</div>
 </body>
 </html>

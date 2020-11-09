@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Controller
 public class CarController {
@@ -48,10 +50,16 @@ public class CarController {
         return "/Ajout";
     }
 
-   /* @GetMapping(value ="/updateCar")
-    public  Cars updateCar(Cars cars, Model model){
-        model.getAttribute("cars", cars);
-        return
-    }*/
+    @GetMapping(value ="/updateCar")
+    public  String updateCar(@ModelAttribute("cars")Cars cars, Model model){
+
+         cars = (Cars) model.getAttribute("cars");
+        if(cars != null) {
+            model.addAttribute("cars", cars);
+        }else{
+            return "/Erreur";
+        }
+        return "/updateCar";
+    }
 
 }

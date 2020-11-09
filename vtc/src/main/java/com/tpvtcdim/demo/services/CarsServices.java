@@ -18,4 +18,6 @@ public class CarsServices {
     public void deleteCar(Cars car){carsRepository.delete(car);
     }
     public List<Cars> listCars(){return carsRepository.findAll();}
+
+    public void updateCar(Integer carId){carsRepository.metAJourNom(carId);}
 }
