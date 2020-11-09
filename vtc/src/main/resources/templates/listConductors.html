@@ -53,7 +53,7 @@
 
 
 
-            <td><form th:href="@{deleteConductor/__${conductor.conductorId}__}"> Supprimer<button type="submit"></button> </form></td>
+            <td><form th:action="@{/deleteConductor}" th:object="${conductor}">  Supprimer<button type="submit"></button> </form></td>
             <td><form th:action="@{/updateConductor}" th:object="${conductor}"> Modifier<button type="submit"> </button></form></td>
 
 

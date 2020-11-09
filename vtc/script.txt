@@ -7,6 +7,16 @@ create table ASSOC_LOAN_CONDUCTOR
 )
 go
 
+
+create table ASSOC_LOAN_CAR(
+                               CAR_ID numeric not null,
+                               LOAN_ID numeric not null,
+                               constraint PK_ASSOC_LOAN_CAR
+                                   primary key nonclustered (CAR_ID, LOAN_ID)
+)
+go
+
+
 create table CARS
 (
 	CAR_ID numeric identity

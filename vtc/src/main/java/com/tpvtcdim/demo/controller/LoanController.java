@@ -1,14 +1,9 @@
 package com.tpvtcdim.demo.controller;
 
-import com.tpvtcdim.demo.model.AssocLoanConductor;
-import com.tpvtcdim.demo.model.Cars;
-import com.tpvtcdim.demo.model.Conductor;
-import com.tpvtcdim.demo.model.Loan;
-import com.tpvtcdim.demo.services.AssocLoanConductorServices;
-import com.tpvtcdim.demo.services.CarsServices;
-import com.tpvtcdim.demo.services.ConductorServices;
-import com.tpvtcdim.demo.services.LoanServices;
+import com.tpvtcdim.demo.model.*;
+import com.tpvtcdim.demo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Optional;
 
 
 @Controller
@@ -24,12 +20,17 @@ public class LoanController {
 
     @Autowired
     LoanServices loanServices;
-@Autowired
+    @Autowired
     CarsServices carsServices;
     @Autowired
     ConductorServices conductorServices;
     @Autowired
     AssocLoanConductorServices assocLoanConductorServices;
+    @Autowired
+    AssocLoanCarServices assocLoanCarServices;
+
+    @Value("${erreur.car.unavailable}")
+    private String erreurMessage;
 
     @GetMapping("/listLoan")
     public String getLoans(Model model){
@@ -53,11 +54,14 @@ public class LoanController {
     }
 
     @PostMapping (path="/createLoan")
-    public String createAssoc(AssocLoanConductor assocLoanConductor, Model model) {
+    public String createAssoc(@RequestParam String Cars, AssocLoanConductor assocLoanConductor, Model model) {
 
         model.addAttribute("assocLoanConductor", assocLoanConductor);
+        if (assocLoanCarServices.carAlreadyBooks(Integer.parseInt(Cars))){
+            model.addAttribute("erreurMessage", erreurMessage);
+            return ("/Erreur");
+        }
         Loan loan = new Loan();
-
         loan.setLoanDateEnd(new java.sql.Date(2020,11,20));
         loan.setLoanDateStart(new java.sql.Date(2020,11,28));
         loanServices.createLoan(loan);
@@ -65,6 +69,12 @@ public class LoanController {
         int loanId = loanServices.findLast();
 
         assocLoanConductorServices.createAssocLoanConductor(assocLoanConductor);
+        AssocLoanCar assocLoanCar = new AssocLoanCar();
+        assocLoanCar.setCarId(Integer.parseInt(Cars));
+        assocLoanCar.setLoanId(loanId);
+
+
+        assocLoanCarServices.createAssocLoanCar(assocLoanCar);
 
         return ("/Ajout");
     }
@@ -85,11 +95,12 @@ public class LoanController {
         return "redirect:/listCustomers";
     }
 
-    @RequestMapping(value ="/deleteLoan/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable(name = "id") String id){
+    @GetMapping(value ="/deleteLoan")
+    public String delete(Loan loan, Model model){
+        loan = (Loan) model.getAttribute("loan");
+loanServices.deleteLoan(loan);
 
-
-        return ("listLoans");
+        return "/Ajout";
     }
 
 

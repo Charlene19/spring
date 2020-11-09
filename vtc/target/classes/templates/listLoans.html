@@ -35,7 +35,7 @@
 <h2 style="text-align: center">Liste des réservations !</h2>
 <div class="container">
 
-    <table class="table" border="1">
+    <table border="1" class="table">
         <tr>
             <th scope="col">ID Réservation</th>
             <th scope="col">Date de début</th>
@@ -52,7 +52,7 @@
             <td th:text="${loan.loanDateEnd}">...</td>
 
 
-            <td><form th:href="@{deleteLoan/__${loan.loanId}__}"> Supprimer<button type="submit"></button> </form></td>
+            <td><form th:action="@{/deleteLoan}" th:object="${loan}"> Supprimer<button type="submit"> </button></form>
             <td><form th:action="@{/updateLoan}" th:object="${loan}"> Modifier<button type="submit"> </button></form></td>
 
         </tr>

@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="EN">
+
 <head>
-    <meta charset="UTF-8">
     <title>Erreur sur l'action</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" rel="stylesheet">
 </head>
 <body>
+
+<div xmlns:th="http://www.thymeleaf.org"
+     style="border: 1px solid #ccc;padding:5px;margin-bottom:20px;">
+
+    <!-- <a th:href="@{/_menu.html}">Home</a> -->
+    <a href="/"> Home </a>
+
+    | &nbsp;
+
+    <!--<a th:href="@{Customer.html}">Création Client</a>-->
+    <a href="Cars.html"> Création Cars </a>
+    | &nbsp;
+
+    <!--  <a th:href="@{templates/Cars.html}">Création Voiture</a>-->
+    <a href="Customer.html"> Création Customer </a>
+    | &nbsp;
+
+    <!--<a th:href="@{templates/Conductor.html}">Création Conducteur</a>-->
+    <a href="Conductor.html"> Création Conducteur </a>
+    | &nbsp;
+
+    <!-- <a th:href="@{/templates/Loan.html}">Réservation</a>-->
+    <a href="/Loan"> Réservation </a>
+
+</div>
+
+<div>
+
+    <h3> Votre action n'a pas pu être exécuté</h3>
+    <h4 th:utext="${erreurMessage}"> </h4>
+</div>
+
+</br>
+<div style="text-align: center">
+
+    <form action="/listCars" method="GET">
+        <button >Liste voitures</button>
+    </form>
+</div>
+
+</br>
+<div style="text-align: center">
+    <form action="/listCustomers" method="GET">
+        <button>Liste clients</button>
+    </form>
+</div>
+</br>
+<div style="text-align: center">
+    <form action="/listLoan" method="GET">
+        <button>List réservation</button>
+    </form>
+</div>
+</br>
+<div style="text-align: center">
+    <form action="/listConductors" method="GET">
+        <button>Liste des conducteurs</button>
+    </form>
+</div>
+</div>
 
 </body>
 </html>

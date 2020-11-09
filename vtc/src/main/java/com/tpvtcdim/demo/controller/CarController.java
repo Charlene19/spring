@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @Controller
 public class CarController {
 
@@ -41,11 +42,24 @@ public class CarController {
     }
 
 
-   @RequestMapping(value ="/deleteCar/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable(name = "id") String id){
+    @GetMapping(value ="/deleteCar")
+    public String delete(Cars cars, Model model){
+        cars = (Cars) model.getAttribute("cars");
+        carsServices.deleteCar(cars);
 
+        return "/Ajout";
+    }
 
-        return ("listCars");
+    @GetMapping(value ="/updateCar")
+    public  String updateCar(@ModelAttribute("cars")Cars cars, Model model){
+
+         cars = (Cars) model.getAttribute("cars");
+        if(cars != null) {
+            model.addAttribute("cars", cars);
+        }else{
+            return "/Erreur";
+        }
+        return "/updateCar";
     }
 
 }

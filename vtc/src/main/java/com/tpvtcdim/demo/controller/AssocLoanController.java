@@ -17,8 +17,6 @@ public class AssocLoanController {
     @Autowired
     AssocLoanConductorServices assocLoanConductorServices;
 
-    @Autowired
-    LoanServices loanServices;
 
 
 
