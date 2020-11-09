@@ -4,6 +4,7 @@ package com.tpvtcdim.demo.controller;
 import com.tpvtcdim.demo.model.Cars;
 import com.tpvtcdim.demo.services.CarsServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class CarController {
 
     @Autowired
     CarsServices carsServices;
+    @Value("${method.unavailable}")
+    private String erreurMessage;
 
     @PostMapping("/createCars")
     public String addCar(@RequestParam String marque, @RequestParam String modele, @RequestParam String couleur, @RequestParam String immatriculation) {
@@ -57,6 +60,7 @@ public class CarController {
         if(cars != null) {
             model.addAttribute("cars", cars);
         }else{
+            model.addAttribute("erreurMessage", erreurMessage);
             return "/Erreur";
         }
         return "/updateCar";
